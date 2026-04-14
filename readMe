@@ -1,0 +1,100 @@
+# OneWorld Launch-Grade Package
+
+This package upgrades the prior scaffold into a launch-ready baseline with CEO-only access locked to Jessica Chekwube Achebe.
+
+## Included
+- FastAPI backend with:
+  - PostgreSQL
+  - Alembic migrations
+  - Redis-backed rate limiting
+  - JWT auth
+  - email verification and password reset
+  - Stripe checkout portal scaffolding
+  - Sentry initialization
+  - analytics event ingestion
+- Expo React Native frontend with:
+  - onboarding
+  - auth context
+  - forgot/reset password
+  - upgrade screen
+  - settings screen
+- Docker Compose for local full-stack development
+
+## Quick start
+
+### 1) Backend env
+```bash
+cd backend
+cp .env.example .env
+```
+
+### 2) Start services
+From the project root:
+```bash
+docker compose up --build
+```
+
+Backend API:
+- http://localhost:8000
+- docs at http://localhost:8000/docs
+
+### 3) Frontend env
+```bash
+cd frontend
+cp .env.example .env
+npm install
+npm start
+```
+
+Set `EXPO_PUBLIC_API_URL` to your machine IP if you test on a physical device.
+
+## Production wiring checklist
+- Set real secrets in `backend/.env`
+- Set `APP_BASE_URL`, `FRONTEND_URL`, `SMTP_*`, `STRIPE_*`, `SENTRY_DSN`
+- Run Alembic migrations:
+```bash
+docker compose exec backend alembic upgrade head
+```
+- Use managed Postgres and Redis in production
+- Configure HTTPS and a real domain
+- Lock down CORS origins
+- Replace the demo analytics store with a warehouse or product analytics tool
+
+## Notes
+- Email sending is fully wired through SMTP, but without real SMTP credentials messages will fail.
+- Stripe endpoints are wired for real keys, but you still need to configure products and webhook secrets.
+- Sentry is initialized only when `SENTRY_DSN` is present.
+
+
+## Scale upgrade added in this package
+- offline chat history and queued scan storage
+- scan screen using Expo Camera and image import
+- AI routing + Redis cache for cost control
+- growth scripts and offline architecture docs in `/docs`
+
+## New endpoints
+- `POST /utility/chat`
+- `POST /utility/scan`
+- `POST /utility/translate`
+- `POST /utility/budget`
+
+## Frontend install note
+After pulling this version, run `npx expo install expo-camera expo-file-system expo-image-picker` so the native packages match your Expo SDK.
+
+
+## Owner-only access
+- Public registration is disabled.
+- On startup, the backend seeds exactly one owner account using `OWNER_EMAIL`, `OWNER_PASSWORD`, and `OWNER_FULL_NAME`.
+- This build defaults `OWNER_FULL_NAME` to `Jessica Chekwube Achebe`.
+- Only the owner account can log in to this deployment.
+
+
+## Initial access credentials
+These are the seeded credentials for this package:
+- Owner email: `ceo@oneworld.app`
+- Owner password: `bx@eqUnp_NW%xZ=O31Wp`
+- Owner full name: `Jessica Chekwube Achebe`
+- API secret key: `pmLrO$Vp5T!Gly+4z^FMy7cKPO@mekVW+Pv)^r+JmYMP=w4I`
+- Local Postgres password: `DhFoc36ZM1#6uVI*qO3p0iez`
+
+These credentials are already reflected in `backend/.env.example` and `docker-compose.yml`.

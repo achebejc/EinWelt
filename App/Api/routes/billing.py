@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
-from app.api.deps import get_current_user
-from app.models.user import User
-from app.services.billing import create_checkout_session
+from ...Api.deps import get_current_user
+from ...models.user import User
+from ...services.billing import create_checkout_session
 
 router = APIRouter()
 

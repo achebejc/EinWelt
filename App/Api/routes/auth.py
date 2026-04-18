@@ -1,16 +1,16 @@
 from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
-from ...core.rate_limit import limiter
-from ...db.session import get_db
-from ...models.user import User
-from ...schemas.auth import (
+from app.core.rate_limit import limiter
+from app.db.session import get_db
+from app.models.user import User
+from app.schemas.auth import (
     RegisterRequest, LoginRequest, TokenResponse,
     ForgotPasswordRequest, ResetPasswordRequest, VerifyEmailRequest
 )
-from ...core.security import get_password_hash, verify_password, create_access_token
-from ...services.tokens import create_token, consume_token
-from ...services.email import send_email
-from ...core.config import settings
+from app.core.security import get_password_hash, verify_password, create_access_token
+from app.services.tokens import create_token, consume_token
+from app.services.email import send_email
+from app.core.config import settings
 
 router = APIRouter()
 

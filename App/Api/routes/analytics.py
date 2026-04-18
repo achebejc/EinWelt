@@ -1,11 +1,11 @@
 import json
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from app.api.deps import get_current_user
-from app.db.session import get_db
-from app.models.analytics import AnalyticsEvent
-from app.models.user import User
-from app.schemas.analytics import AnalyticsEventIn
+from App.Api.deps import get_current_user
+from App.db.session import get_db
+from App.models.analytics import AnalyticsEvent
+from App.models.user import User
+from App.schemas.analytics import AnalyticsEventIn
 
 router = APIRouter()
 

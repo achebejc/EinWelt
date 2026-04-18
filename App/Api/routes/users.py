@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from ...Api.deps import get_current_user
-from ...db.session import get_db
-from ...models.user import User
-from ...schemas.user import UserOut, UpdateProfileRequest
+from app.api.deps import get_current_user
+from app.db.session import get_db
+from app.models.user import User
+from app.schemas.user import UserOut, UpdateProfileRequest
 
 router = APIRouter()
 

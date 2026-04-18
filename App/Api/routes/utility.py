@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from app.schemas.utility import BudgetRequest, ChatRequest, ChatResponse, ScanRequest, TranslationRequest
-from app.services.ai_router import generate_response
+from ...schemas.utility import BudgetRequest, ChatRequest, ChatResponse, ScanRequest, TranslationRequest
+from ...services.ai_router import generate_response
 
 router = APIRouter()
 

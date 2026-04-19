@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment files — NEVER commit real secrets
+.env
+.env.local
+.env.*.local
+
+# Test artefacts
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+*.cover
+
+# SQLite test database
+test.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
+# Docker
+*.log
+
+# Alembic — keep versions/ tracked, ignore __pycache__
+alembic/__pycache__/
+alembic/versions/__pycache__/
+
+# Node (frontend)
+node_modules/
+frontend/.expo/
+frontend/dist/

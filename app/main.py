@@ -4,19 +4,19 @@ from slowapi.errors import RateLimitExceeded
 from slowapi.middleware import SlowAPIMiddleware
 from slowapi import _rate_limit_exceeded_handler
 from app.core.config import settings
-from app.core.sentry import init_sentry
-from app.core.rate_limit import limiter
+# from app.core.sentry import init_sentry
+# from app.core.rate_limit import limiter
 from app.Api.routes import auth, users, billing, analytics, utility
 from app.db.session import SessionLocal
 from app.services.bootstrap import ensure_owner_account
 
-init_sentry()
+# init_sentry()
 
 app = FastAPI(title=settings.app_name)
 
-app.state.limiter = limiter
-app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
-app.add_middleware(SlowAPIMiddleware)
+# app.state.limiter = limiter
+# app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+# app.add_middleware(SlowAPIMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[settings.frontend_url],

@@ -1,14 +1,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from slowapi.errors import RateLimitExceeded
-from slowapi.middleware import SlowAPIMiddleware
-from slowapi import _rate_limit_exceeded_handler
+# from slowapi.errors import RateLimitExceeded  # not yet enabled
+# from slowapi.middleware import SlowAPIMiddleware  # not yet enabled
+# from slowapi import _rate_limit_exceeded_handler  # not yet enabled
 from app.core.config import settings
-# from app.core.sentry import init_sentry
-# from app.core.rate_limit import limiter
+# from app.core.sentry import init_sentry  # not yet implemented
+# from app.core.rate_limit import limiter  # not yet implemented
 from app.Api.routes import auth, users, billing, analytics, utility
-from app.db.session import SessionLocal
-from app.services.bootstrap import ensure_owner_account
+# from app.db.session import SessionLocal  # requires models
+# from app.services.bootstrap import ensure_owner_account  # not yet implemented
 
 # init_sentry()
 
@@ -37,11 +37,11 @@ def health():
     return {"status": "ok", "environment": settings.environment}
 
 
-@app.on_event("startup")
-def seed_owner_account():
-    db = SessionLocal()
-    try:
-        ensure_owner_account(db)
-    finally:
-        db.close()
+# @app.on_event("startup")
+# def seed_owner_account():
+#     db = SessionLocal()
+#     try:
+#         ensure_owner_account(db)
+#     finally:
+#         db.close()
 

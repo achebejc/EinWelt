@@ -1,0 +1,4 @@
+Git status
+Git add
+Git commit -m “prepare launch candidate”
+Git tag launch-candidate-v1

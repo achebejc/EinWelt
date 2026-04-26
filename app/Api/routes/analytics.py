@@ -12,7 +12,15 @@ from app.schemas.analytics import AnalyticsEventIn
 router = APIRouter()
 
 
-@router.post("/events", status_code=status.HTTP_201_CREATED)
+@router.post(
+    "/events",
+    status_code=status.HTTP_201_CREATED,
+    summary="Record an analytics event",
+    description=(
+        "Ingest a client-side analytics event. "
+        "The `payload` field accepts arbitrary JSON metadata."
+    ),
+)
 def create_event(
     body: AnalyticsEventIn,
     current_user: User = Depends(get_current_user),

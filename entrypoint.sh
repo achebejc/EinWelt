@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "[entrypoint] Running Alembic migrations..."
+alembic -c alembic/alembic.ini upgrade head
+
+echo "[entrypoint] Starting application..."
+exec uvicorn app.main:app --host 0.0.0.0 --port "${PORT:-8000}"
